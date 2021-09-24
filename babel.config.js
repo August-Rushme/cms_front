@@ -1,3 +1,28 @@
+/*
+ * @Author: August
+ * @Date: 2021-09-24 16:10:31
+ * @LastEditors: August
+ * @LastEditTime: 2021-09-24 16:56:32
+ * @FilePath: \rookie-cms\babel.config.js
+ */
 module.exports = {
-  presets: ["@vue/cli-plugin-babel/preset"],
-};
+  plugins: [
+    [
+      'import',
+      {
+        libraryName: 'element-plus',
+        // 引入组件
+        customName: (name) => {
+          name = name.slice(3)
+          return `element-plus/lib/components/${name}`
+        },
+        // 引入样式
+        customStyleName: (name) => {
+          name = name.slice(3)
+          return `element-plus/lib/components/${name}/style/css`
+        }
+      }
+    ]
+  ],
+  presets: ['@vue/cli-plugin-babel/preset']
+}

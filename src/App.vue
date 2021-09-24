@@ -1,27 +1,26 @@
+<!--
+ * @Author: August
+ * @Date: 2021-09-24 16:10:31
+ * @LastEditors: August
+ * @LastEditTime: 2021-09-24 17:17:18
+ * @FilePath: \rookie-cms\src\App.vue
+-->
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+  <div>
+    <h2>
+      <el-button type="primary">123</el-button>
+      <el-input></el-input>
+    </h2>
+  </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
-import HelloWorld from "./components/HelloWorld.vue";
+import { defineComponent } from 'vue'
 
 export default defineComponent({
-  name: "App",
-  components: {
-    HelloWorld,
-  },
-});
+  name: 'App',
+  components: {}
+})
 </script>
 
-<style lang="less">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<style lang="less"></style>
