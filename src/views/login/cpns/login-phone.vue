@@ -2,7 +2,7 @@
  * @Author: August
  * @Date: 2021-09-25 17:56:42
  * @LastEditors: August
- * @LastEditTime: 2021-09-25 17:56:53
+ * @LastEditTime: 2021-09-25 21:07:33
  * @FilePath: \rookie-cms\src\views\login\cpns\login-phone.vue
 -->
 <template>

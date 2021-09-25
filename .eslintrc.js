@@ -2,7 +2,7 @@
  * @Author: August
  * @Date: 2021-09-24 16:10:31
  * @LastEditors: August
- * @LastEditTime: 2021-09-25 11:02:31
+ * @LastEditTime: 2021-09-26 00:01:59
  * @FilePath: \rookie-cms\.eslintrc.js
  */
 module.exports = {
