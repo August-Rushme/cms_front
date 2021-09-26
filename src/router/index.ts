@@ -2,13 +2,14 @@
  * @Author: August
  * @Date: 2021-09-24 16:36:12
  * @LastEditors: August
- * @LastEditTime: 2021-09-25 20:24:43
+ * @LastEditTime: 2021-09-26 15:57:14
  * @FilePath: \rookie-cms\src\router\index.ts
  */
 
 import { createRouter, createWebHistory } from 'vue-router'
 import type { RouteRecordRaw } from 'vue-router'
 import localCache from '@/utils/catch'
+import { firstMenu } from '@/utils/map-menus'
 const routes: RouteRecordRaw[] = [
   { path: '/', redirect: '/main' },
   {
@@ -29,6 +30,10 @@ router.beforeEach((to) => {
     if (!token) {
       return '/login'
     }
+  }
+  console.log(firstMenu)
+  if (to.path === '/main') {
+    return firstMenu.path
   }
 })
 export default router

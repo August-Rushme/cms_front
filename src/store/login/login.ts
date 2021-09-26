@@ -2,7 +2,7 @@
  * @Author: August
  * @Date: 2021-09-25 18:04:36
  * @LastEditors: August
- * @LastEditTime: 2021-09-26 13:54:48
+ * @LastEditTime: 2021-09-26 15:14:36
  * @FilePath: \rookie-cms\src\store\login\login.ts
  */
 import { IAccount } from '@/service/login/types'
@@ -10,9 +10,10 @@ import { Module } from 'vuex'
 import router from '@/router'
 import localCache from '@/utils/catch'
 import { Md5 } from 'ts-md5/dist/md5'
-import { IRootTypes } from '../rootTypes'
+import { IRootTypes } from '../types'
 import { ILoginStateType } from './types'
 import { loginRequest, requestUserInfo, requestUserMenus } from '@/service/login/http-login'
+import { mapMenusToRoutes } from '@/utils/map-menus'
 
 const loginModule: Module<ILoginStateType, IRootTypes> = {
   namespaced: true,
@@ -30,8 +31,18 @@ const loginModule: Module<ILoginStateType, IRootTypes> = {
     changeUserInfo(state, userInfo: any) {
       state.userInfo = userInfo
     },
-    changeUserMenus(state, menus: any) {
-      state.userMenus = menus
+    changeUserMenus(state, userMenus: any) {
+      // debugger
+      state.userMenus = userMenus
+      // 注册动态路由
+      // mapMenusToRoutes(userMenus)
+      console.log(userMenus)
+      const routes = mapMenusToRoutes(userMenus)
+      // 将routes => router.main.children
+      console.log(routes)
+      routes.forEach((route) => {
+        router.addRoute('main', route)
+      })
     }
   },
   actions: {
