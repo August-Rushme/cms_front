@@ -2,7 +2,7 @@
  * @Author: August
  * @Date: 2021-09-25 17:48:29
  * @LastEditors: August
- * @LastEditTime: 2021-09-26 00:20:42
+ * @LastEditTime: 2021-09-26 13:48:47
  * @FilePath: \rookie-cms\src\views\login\cpns\login-account.vue
 -->
 <template>
@@ -30,10 +30,9 @@ import { useStore } from 'vuex'
 import { ElForm } from 'element-plus'
 import { rules } from '../config/account-config'
 import cache from '@/utils/catch'
-import { Md5 } from 'ts-md5'
+import { Md5 } from 'ts-md5/dist/md5'
 export default defineComponent({
   setup() {
-    const md5 = new Md5()
     const store = useStore()
     const accountFrom = reactive({
       userName: cache.getCache('userName') ?? '',
@@ -44,6 +43,7 @@ export default defineComponent({
     const accountFormRef = ref<InstanceType<typeof ElForm>>()
     // 处理登陆
     // debugger
+    const key = 'august u can do it'
     const loginAction = (isKeepPassword: boolean) => {
       accountFormRef.value?.validate((valid) => {
         if (!valid) {
@@ -55,7 +55,7 @@ export default defineComponent({
           cache.setCache('userName', accountFrom.userName)
           if (!cache.getCache('password')) {
             // 如果缓存里面没有就加密
-            cache.setCache('password', md5.appendStr('august u can do it').end())
+            cache.setCache('password', Md5.hashStr(accountFrom.password + key))
           }
         } else {
           // 删除缓存

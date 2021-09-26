@@ -2,7 +2,7 @@
  * @Author: August
  * @Date: 2021-09-25 18:04:36
  * @LastEditors: August
- * @LastEditTime: 2021-09-26 00:18:18
+ * @LastEditTime: 2021-09-26 13:54:48
  * @FilePath: \rookie-cms\src\store\login\login.ts
  */
 import { IAccount } from '@/service/login/types'
@@ -36,11 +36,12 @@ const loginModule: Module<ILoginStateType, IRootTypes> = {
   },
   actions: {
     async accountLoginAction({ commit }, playload: IAccount) {
-      const md5 = new Md5()
-      if (localCache.getCache('password')) {
-        playload.password = localCache.getCache('password')
+      if (!localCache.getCache('password')) {
+        const key = 'august u can do it'
+        playload.password = Md5.hashStr(playload.password + key)
+        localCache.deleteCache('password')
       }
-      playload.password = md5.appendStr('august u can do it').end()
+      playload.password = localCache.getCache('password')
       // 处理登录
       const { data: loginResult } = await loginRequest(playload)
       const { token, id } = loginResult.data
