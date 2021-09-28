@@ -2,7 +2,7 @@
  * @Author: August
  * @Date: 2021-09-25 18:04:36
  * @LastEditors: August
- * @LastEditTime: 2021-09-26 15:14:36
+ * @LastEditTime: 2021-09-28 16:10:45
  * @FilePath: \rookie-cms\src\store\login\login.ts
  */
 import { IAccount } from '@/service/login/types'
@@ -36,10 +36,8 @@ const loginModule: Module<ILoginStateType, IRootTypes> = {
       state.userMenus = userMenus
       // 注册动态路由
       // mapMenusToRoutes(userMenus)
-      console.log(userMenus)
       const routes = mapMenusToRoutes(userMenus)
       // 将routes => router.main.children
-      console.log(routes)
       routes.forEach((route) => {
         router.addRoute('main', route)
       })
@@ -58,6 +56,7 @@ const loginModule: Module<ILoginStateType, IRootTypes> = {
       const { token, id } = loginResult.data
       commit('changeToken', token)
       localCache.setCache('token', token)
+      localCache.setCache('userId', id)
       // 请求用户信息
       const { data: userInfoResult } = await requestUserInfo(id)
       const userInfo = userInfoResult.data

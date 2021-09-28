@@ -2,7 +2,7 @@
  * @Author: August
  * @Date: 2021-09-24 16:48:02
  * @LastEditors: August
- * @LastEditTime: 2021-09-26 14:37:06
+ * @LastEditTime: 2021-09-27 21:46:13
  * @FilePath: \rookie-cms\src\global\register-element.ts
  */
 
@@ -11,15 +11,19 @@ import {
   ElAvatar,
   ElBreadcrumb,
   ElButton,
+  ElCard,
   ElCheckbox,
   ElCol,
   ElContainer,
   ElDatePicker,
+  ElDialog,
   ElDropdown,
   ElForm,
+  ElIcon,
   ElInput,
   ElLink,
   ElMenu,
+  ElPagination,
   ElRow,
   ElSelect,
   ElSwitch,
@@ -43,7 +47,11 @@ const components = [
   ElSelect,
   ElBreadcrumb,
   ElTable,
-  ElSwitch
+  ElSwitch,
+  ElIcon,
+  ElCard,
+  ElPagination,
+  ElDialog
 ]
 export default function (app: App): void {
   for (const component of components) {

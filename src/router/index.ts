@@ -2,7 +2,7 @@
  * @Author: August
  * @Date: 2021-09-24 16:36:12
  * @LastEditors: August
- * @LastEditTime: 2021-09-26 15:57:14
+ * @LastEditTime: 2021-09-27 21:34:32
  * @FilePath: \rookie-cms\src\router\index.ts
  */
 
@@ -17,7 +17,12 @@ const routes: RouteRecordRaw[] = [
     name: 'login',
     component: () => import('@/views/login/login.vue')
   },
-  { path: '/main', name: 'main', component: () => import('@/views/main/main.vue') }
+  { path: '/main', name: 'main', component: () => import('@/views/main/main.vue') },
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'not-found',
+    component: () => import('@/views/not-found/not-found.vue')
+  }
 ]
 const router = createRouter({
   routes,
@@ -31,7 +36,6 @@ router.beforeEach((to) => {
       return '/login'
     }
   }
-  console.log(firstMenu)
   if (to.path === '/main') {
     return firstMenu.path
   }

@@ -2,7 +2,7 @@
  * @Author: August
  * @Date: 2021-09-26 14:18:23
  * @LastEditors: August
- * @LastEditTime: 2021-09-26 16:20:50
+ * @LastEditTime: 2021-09-27 21:32:53
  * @FilePath: \rookie-cms\src\utils\map-menus.ts
  */
 import type { RouteRecordRaw } from 'vue-router'
@@ -32,7 +32,6 @@ export function mapMenusToRoutes(userMenus: any[]): RouteRecordRaw[] {
         if (route) routes.push(route)
         if (!firstMenu) {
           firstMenu = menu
-          console.log(firstMenu)
         }
       } else {
         if (menu.children) {
