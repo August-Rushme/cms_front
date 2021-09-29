@@ -2,7 +2,7 @@
  * @Author: August
  * @Date: 2021-09-24 16:48:02
  * @LastEditors: August
- * @LastEditTime: 2021-09-27 21:46:13
+ * @LastEditTime: 2021-09-29 11:31:22
  * @FilePath: \rookie-cms\src\global\register-element.ts
  */
 
@@ -28,7 +28,8 @@ import {
   ElSelect,
   ElSwitch,
   ElTable,
-  ElTabs
+  ElTabs,
+  ElTree
 } from 'element-plus'
 const components = [
   ElForm,
@@ -51,7 +52,8 @@ const components = [
   ElIcon,
   ElCard,
   ElPagination,
-  ElDialog
+  ElDialog,
+  ElTree
 ]
 export default function (app: App): void {
   for (const component of components) {

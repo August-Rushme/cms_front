@@ -2,7 +2,7 @@
  * @Author: August
  * @Date: 2021-09-26 14:06:33
  * @LastEditors: August
- * @LastEditTime: 2021-09-28 20:44:23
+ * @LastEditTime: 2021-09-28 22:58:54
  * @FilePath: \rookie-cms\src\views\main\system\user\user.vue
 -->
 <template>
@@ -12,7 +12,6 @@
       <page-search pageName="users"></page-search>
       <!-- 表格内容 -->
       <page-content
-        ref="pageContentRef"
         :contentTableConfig="contentTableConfig"
         pageName="users"
         @editBtnClick="handleEditData"
@@ -184,7 +183,6 @@ export default defineComponent({
       formData.value.realname = row.realname
       formData.value.cellphone = row.cellphone
       formData.value.statuts = row.statuts
-      console.log(formData.value.statuts)
     }
 
     const editConfirmHandle = () => {

@@ -2,7 +2,7 @@
  * @Author: August
  * @Date: 2021-09-27 10:53:48
  * @LastEditors: August
- * @LastEditTime: 2021-09-28 18:16:07
+ * @LastEditTime: 2021-09-28 21:15:37
  * @FilePath: \rookie-cms\src\base-ui\table\src\table.vue
 -->
 <template>
@@ -15,7 +15,7 @@
         </div>
       </slot>
     </div>
-    <el-table :data="listData" border style="width: 100%">
+    <el-table :data="listData" border style="width: 100%" v-bind="childrenProps">
       <el-table-column type="index" label="序号" align="center" width="80"></el-table-column>
       <template v-for="propItem in propList" :key="propItem.prop">
         <el-table-column v-bind="propItem" align="center">
@@ -47,9 +47,10 @@ export default defineComponent({
       type: Array,
       required: true
     },
-    page: {
+
+    childrenProps: {
       type: Object,
-      default: () => ({ pageNum: 1, pageSize: 4 })
+      default: () => ({})
     }
   },
   setup() {

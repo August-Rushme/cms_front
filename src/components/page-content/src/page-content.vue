@@ -2,7 +2,7 @@
  * @Author: August
  * @Date: 2021-09-27 11:14:55
  * @LastEditors: August
- * @LastEditTime: 2021-09-28 20:53:44
+ * @LastEditTime: 2021-09-29 10:04:04
  * @FilePath: \rookie-cms\src\components\page-content\src\page-content.vue
 -->
 <template>
@@ -24,6 +24,12 @@
       </template>
       <template #updateAt="scope">
         <span>{{ $filters.formatTime(scope.row.updatedat) }}</span>
+      </template>
+      <template #created="scope">
+        <span>{{ $filters.formatTime(scope.row.created) }}</span>
+      </template>
+      <template #updated="scope">
+        <span>{{ $filters.formatTime(scope.row.updated) }}</span>
       </template>
       <template #handler="scope">
         <div class="handle-btns">

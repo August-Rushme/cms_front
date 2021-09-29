@@ -2,7 +2,7 @@
  * @Author: August
  * @Date: 2021-09-24 16:43:33
  * @LastEditors: August
- * @LastEditTime: 2021-09-27 14:32:59
+ * @LastEditTime: 2021-09-29 15:18:51
  * @FilePath: \rookie-cms\src\store\index.ts
  */
 import { createStore, Store } from 'vuex'
