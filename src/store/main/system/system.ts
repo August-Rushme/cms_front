@@ -2,7 +2,7 @@
  * @Author: August
  * @Date: 2021-09-27 11:08:21
  * @LastEditors: August
- * @LastEditTime: 2021-09-29 21:04:28
+ * @LastEditTime: 2021-10-01 15:52:06
  * @FilePath: \rookie-cms\src\store\main\system\system.ts
  */
 import { Module } from 'vuex'
@@ -15,6 +15,7 @@ import {
   editPageData,
   getPageListData,
   getRoleData,
+  getRoleMenuData,
   searchPageData
 } from '@/service/main/system/http-system'
 import { requestUserMenus } from '@/service/login/http-login'
@@ -30,7 +31,9 @@ const systemModule: Module<ISystemState, IRootTypes> = {
       menuCount: 0,
       userMenus: [],
       categoryList: [],
-      categoryCount: 0
+      categoryCount: 0,
+      goodList: [],
+      goodCount: 0
     }
   },
   mutations: {
@@ -57,6 +60,12 @@ const systemModule: Module<ISystemState, IRootTypes> = {
     },
     changeCategoryCount(state, total: number) {
       state.categoryCount = total
+    },
+    changeGoodCount(state, total: number) {
+      state.goodCount = total
+    },
+    changeGoodList(state, goods: any) {
+      state.goodList = goods
     }
   },
   getters: {
@@ -91,21 +100,28 @@ const systemModule: Module<ISystemState, IRootTypes> = {
         case 'category':
           pageUrl = '/api/v1/goods/list/sort'
           break
+        case 'good':
+          pageUrl = '/api/v1/goods/list'
+          break
       }
       // 2.对页面发送请求
       const { data: pageResult } = await getPageListData(pageUrl, queryInfo)
-      console.log(pageResult)
       // 3.将数据存储到state中
-      if (pageName === 'users' || pageName === 'role' || pageName === 'category') {
+      if (
+        pageName === 'users' ||
+        pageName === 'role' ||
+        pageName === 'category' ||
+        pageName === 'good'
+      ) {
         const { list, total } = pageResult.data
         const changePageName = pageName.slice(0, 1).toUpperCase() + pageName.slice(1)
         commit(`change${changePageName}List`, list)
         commit(`change${changePageName}Count`, total)
       }
       if (pageName === 'menu') {
-        pageResult.data
         const changePageName = pageName.slice(0, 1).toUpperCase() + pageName.slice(1)
         commit(`change${changePageName}List`, pageResult.data)
+        return pageResult.data
       }
     },
     // 编辑
@@ -126,6 +142,9 @@ const systemModule: Module<ISystemState, IRootTypes> = {
           pageUrl = '/api/v1/role/update'
           break
         case 'category':
+          pageUrl = '/api/v1/goods/update'
+          break
+        case 'good':
           pageUrl = '/api/v1/goods/update'
           break
       }
@@ -166,6 +185,9 @@ const systemModule: Module<ISystemState, IRootTypes> = {
           break
         case 'category':
           pageUrl = '/api/v1/goods/list/sort/search'
+          break
+        case 'good':
+          pageUrl = '/api/v1/goods/list/search'
           break
       }
       // const pageUrl = `/${pageName}/${id}`
@@ -232,9 +254,19 @@ const systemModule: Module<ISystemState, IRootTypes> = {
         case 'category':
           pageUrl = '/api/v1/goods/delete/' + id
           break
+        case 'good':
+          pageUrl = '/api/v1/goods/delete/' + id
+          break
       }
       const { data: res } = await deletePageData(pageUrl)
       // 2.请求最新的数据
+      if (pageName === 'good') {
+        const queryInfo = payload.pageInfo.value
+        return dispatch('getPageListAction', {
+          pageName,
+          queryInfo
+        })
+      }
       dispatch('getPageListAction', {
         pageName,
         queryInfo: {
@@ -258,6 +290,9 @@ const systemModule: Module<ISystemState, IRootTypes> = {
           pageUrl = '/api/v1/role/save'
           break
         case 'category':
+          pageUrl = '/api/v1/goods/save'
+          break
+        case 'good':
           pageUrl = '/api/v1/goods/save'
           break
       }
@@ -291,6 +326,16 @@ const systemModule: Module<ISystemState, IRootTypes> = {
       const pageUrl = '/api/v1/role/perm/' + roleId
       const { data: res } = await assignRoleData(pageUrl, menuIds)
       return res
+    },
+    // 获取角色的菜单
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    async getRoleMenuAction({ commit }, payload: any) {
+      const { roleId } = payload
+      const pageUrl = '/api/v1/role/info/' + roleId
+      const { data: roleMenusResult } = await getRoleMenuData(pageUrl)
+      console.log(roleMenusResult)
+      const roleMenus = roleMenusResult.data
+      return roleMenus
     }
   }
 }

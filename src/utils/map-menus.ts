@@ -2,7 +2,7 @@
  * @Author: August
  * @Date: 2021-09-26 14:18:23
  * @LastEditors: August
- * @LastEditTime: 2021-09-27 21:32:53
+ * @LastEditTime: 2021-10-01 15:26:50
  * @FilePath: \rookie-cms\src\utils\map-menus.ts
  */
 import type { RouteRecordRaw } from 'vue-router'
@@ -70,6 +70,22 @@ export function pathMapToMenus(
       return menu
     }
   }
+}
+// 映射叶子节点
+export function menuMapLeafKeys(menuList: any[]) {
+  // debugger
+  const leftKeys: number[] = []
+  const _recurseGetLeaf = (menuList: any[]) => {
+    for (const menu of menuList) {
+      if (menu.children.length > 0) {
+        _recurseGetLeaf(menu.children)
+      } else {
+        leftKeys.push(menu.id)
+      }
+    }
+  }
+  _recurseGetLeaf(menuList)
+  return leftKeys
 }
 
 export { firstMenu }

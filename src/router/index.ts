@@ -2,7 +2,7 @@
  * @Author: August
  * @Date: 2021-09-24 16:36:12
  * @LastEditors: August
- * @LastEditTime: 2021-09-27 21:34:32
+ * @LastEditTime: 2021-09-30 11:12:21
  * @FilePath: \rookie-cms\src\router\index.ts
  */
 
@@ -11,7 +11,8 @@ import type { RouteRecordRaw } from 'vue-router'
 import localCache from '@/utils/catch'
 import { firstMenu } from '@/utils/map-menus'
 const routes: RouteRecordRaw[] = [
-  { path: '/', redirect: '/main' },
+  { path: '/', name: 'home', component: () => import('@/views/home/home.vue') },
+
   {
     path: '/login',
     name: 'login',

@@ -2,7 +2,7 @@
  * @Author: August
  * @Date: 2021-09-26 14:06:33
  * @LastEditors: August
- * @LastEditTime: 2021-09-28 22:58:54
+ * @LastEditTime: 2021-09-30 12:49:09
  * @FilePath: \rookie-cms\src\views\main\system\user\user.vue
 -->
 <template>
@@ -102,7 +102,7 @@
       </el-dialog>
     </div>
     <!-- 添加用户 -->
-    <el-dialog title="添加用户" v-model="dialogVisibleUser" width="30%">
+    <el-dialog title="添加用户" v-model="dialogVisibleUser" width="30%" @open="clearForm">
       <el-form label-width="100px" v-model="formDataUser">
         <el-form-item label="用户名">
           <el-input v-model="formDataUser.username" placeholder="请输入用户名"></el-input>
@@ -152,6 +152,7 @@ import { PageSearch } from '@/components/page-search'
 import { contentTableConfig } from './config/content.config'
 import PageContent from '@/components/page-content'
 import { useStore } from '@/store'
+import { Md5 } from 'ts-md5/dist/md5'
 import { ElMessage, ElMessageBox } from 'element-plus'
 export default defineComponent({
   name: 'users',
@@ -236,6 +237,7 @@ export default defineComponent({
     }
 
     // 添加用户
+
     const dialogVisibleUser = ref(false)
     const formDataUser = ref({
       username: '',
@@ -245,11 +247,21 @@ export default defineComponent({
       email: '',
       password: ''
     })
+    const clearForm = () => {
+      formDataUser.value.username = ''
+      formDataUser.value.realname = ''
+      formDataUser.value.cellphone = ''
+      formDataUser.value.statuts = ''
+      formDataUser.value.email = ''
+      formDataUser.value.password = ''
+    }
     const addUser = () => {
       dialogVisibleUser.value = true
     }
     const addUserHandler = async () => {
       dialogVisibleUser.value = false
+      const newPassord = Md5.hashStr(formDataUser.value.password)
+      formDataUser.value.password = newPassord
       const res = await store.dispatch('system/addUserAction', { formDataUser })
       if (!res.success) {
         return ElMessage({
@@ -341,7 +353,8 @@ export default defineComponent({
       handleSizeChange,
       handleCurrentChange,
       total,
-      pageInfo
+      pageInfo,
+      clearForm
     }
   }
 })

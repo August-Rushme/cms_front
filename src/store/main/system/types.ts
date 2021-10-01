@@ -2,7 +2,7 @@
  * @Author: August
  * @Date: 2021-09-27 11:08:38
  * @LastEditors: August
- * @LastEditTime: 2021-09-29 19:33:54
+ * @LastEditTime: 2021-09-30 01:42:06
  * @FilePath: \rookie-cms\src\store\main\system\types.ts
  */
 export interface ISystemState {
@@ -15,4 +15,6 @@ export interface ISystemState {
   userMenus: any[]
   categoryCount: number
   categoryList: any[]
+  goodList: any[]
+  goodCount: number
 }

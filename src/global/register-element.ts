@@ -2,13 +2,14 @@
  * @Author: August
  * @Date: 2021-09-24 16:48:02
  * @LastEditors: August
- * @LastEditTime: 2021-09-29 11:31:22
+ * @LastEditTime: 2021-09-30 08:35:56
  * @FilePath: \rookie-cms\src\global\register-element.ts
  */
 
 import { App } from 'vue'
 import {
   ElAvatar,
+  ElBadge,
   ElBreadcrumb,
   ElButton,
   ElCard,
@@ -20,6 +21,7 @@ import {
   ElDropdown,
   ElForm,
   ElIcon,
+  ElImage,
   ElInput,
   ElLink,
   ElMenu,
@@ -29,7 +31,8 @@ import {
   ElSwitch,
   ElTable,
   ElTabs,
-  ElTree
+  ElTree,
+  ElUpload
 } from 'element-plus'
 const components = [
   ElForm,
@@ -53,7 +56,12 @@ const components = [
   ElCard,
   ElPagination,
   ElDialog,
-  ElTree
+  ElTree,
+  ElUpload,
+  ElImage,
+  ElBadge,
+  ElIcon,
+  ElUpload
 ]
 export default function (app: App): void {
   for (const component of components) {

@@ -2,12 +2,11 @@
  * @Author: August
  * @Date: 2021-09-25 17:57:09
  * @LastEditors: August
- * @LastEditTime: 2021-09-25 20:40:55
+ * @LastEditTime: 2021-09-30 12:09:07
  * @FilePath: \rookie-cms\src\views\login\cpns\login-panel.vue
 -->
 <template>
   <div class="login-panel">
-    <h2 class="title">ROOKIE CMS</h2>
     <el-tabs type="border-card" stretch v-model="activeName">
       <el-tab-pane name="username">
         <template #label>
@@ -59,12 +58,8 @@ export default defineComponent({
 
 <style scoped lang="less">
 .login-panel {
-  margin-bottom: 150px;
+  margin-top: 60px;
   width: 380px;
-
-  .title {
-    text-align: center;
-  }
 
   .account-control {
     margin-top: 10px;
@@ -75,6 +70,9 @@ export default defineComponent({
   .login-btn {
     width: 100%;
     margin-top: 10px;
+  }
+  .el-tabs {
+    border-radius: 5px;
   }
 }
 </style>

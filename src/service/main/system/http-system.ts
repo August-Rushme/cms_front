@@ -2,7 +2,7 @@
  * @Author: August
  * @Date: 2021-09-27 10:59:43
  * @LastEditors: August
- * @LastEditTime: 2021-09-29 20:56:20
+ * @LastEditTime: 2021-10-01 15:44:46
  * @FilePath: \rookie-cms\src\service\main\system\http-system.ts
  */
 import hyRequest from '../../index'
@@ -48,6 +48,12 @@ export function addUsereData(url: string, queryInfo: any) {
 }
 export function deletePageData(url: string) {
   return hyRequest.delete<IDataType>({
+    url: url
+  })
+}
+
+export function getRoleMenuData(url: string) {
+  return hyRequest.get<IDataType>({
     url: url
   })
 }

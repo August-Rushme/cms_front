@@ -2,7 +2,7 @@
  * @Author: August
  * @Date: 2021-09-26 17:52:33
  * @LastEditors: August
- * @LastEditTime: 2021-09-29 18:19:10
+ * @LastEditTime: 2021-10-01 15:52:13
  * @FilePath: \rookie-cms\src\views\main\system\role\role.vue
 -->
 <template>
@@ -88,13 +88,14 @@
       </template>
     </el-dialog>
     <!-- 分配权限 -->
-    <el-dialog title="添加" v-model="dialogVisiblePerm" width="30%">
+    <el-dialog title="分配权限" v-model="dialogVisiblePerm" width="30%" ref="elTreeRef">
       <el-tree
         :data="menus"
         show-checkbox
         node-key="id"
         :props="{ children: 'children', label: 'name' }"
         @check="handleCheckChange"
+        ref="elTreeRef"
       >
       </el-tree>
       <template #footer>
@@ -108,13 +109,13 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref } from 'vue'
+import { computed, defineComponent, nextTick, ref } from 'vue'
 import PageContent from '@/components/page-content'
 import { PageSearch } from '@/components/page-search'
 import { contentTableConfig } from './config/content.config'
 import { useStore } from '@/store'
-import localCache from '@/utils/catch'
-import { ElMessage, ElMessageBox } from 'element-plus'
+import { ElMessage, ElMessageBox, ElTree } from 'element-plus'
+import { menuMapLeafKeys } from '@/utils/map-menus'
 export default defineComponent({
   name: 'role',
   components: {
@@ -139,7 +140,6 @@ export default defineComponent({
       formData.value.name = row.name
       formData.value.code = row.code
       formData.value.remark = row.remark
-      console.log(123)
     }
     const editConfirmHandle = () => {
       dialogVisible.value = false
@@ -223,22 +223,25 @@ export default defineComponent({
 
     // 分配权限
 
-    // let rolesOptions: any[] = []
-    // let roleIds = ref<number[]>([])
+    const elTreeRef = ref<InstanceType<typeof ElTree>>()
     const dialogVisiblePerm = ref(false)
-    let dataList = ref<any[]>([])
-    store.dispatch('system/getPageListAction', { pageName: 'menu' })
-    const menus = computed(() => store.state.system.menuList)
+    const menus = ref<any[]>([])
+    const getMenus = async (menus: any) => {
+      menus.value = await store.dispatch('system/getPageListAction', { pageName: 'menu' })
+    }
+    getMenus(menus)
     let roleId = 0
     const handlePermClick = async (row: any) => {
+      console.log(row)
+
       dialogVisiblePerm.value = true
-      const userId = localCache.getCache('userId')
-      const menuList = await store.dispatch('system/getUserMenuAction', { userId })
-      menuList.forEach((item: any) => {
-        dataList.value.push(item)
+      const roleId = row.id
+      const menuList = await store.dispatch('system/getRoleMenuAction', { roleId })
+      console.log(menuList)
+      const leafKeys = menuMapLeafKeys(menuList)
+      nextTick(() => {
+        elTreeRef.value?.setCheckedKeys(leafKeys, false)
       })
-      roleId = row.id
-      console.log(roleId)
     }
 
     const menuIds = ref<any[]>([])
@@ -283,9 +286,9 @@ export default defineComponent({
       dialogVisiblePerm,
       handlePermClick,
       assignConfirmHandle,
-      dataList,
       menus,
-      handleCheckChange
+      handleCheckChange,
+      elTreeRef
     }
   }
 })

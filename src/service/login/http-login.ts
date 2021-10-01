@@ -2,7 +2,7 @@
  * @Author: August
  * @Date: 2021-09-25 18:06:10
  * @LastEditors: August
- * @LastEditTime: 2021-09-25 20:17:22
+ * @LastEditTime: 2021-09-30 12:26:51
  * @FilePath: \rookie-cms\src\service\login\http-login.ts
  */
 import auRequest from '../index'
@@ -12,7 +12,8 @@ import { IAccount } from './types'
 enum LoginAPI {
   Login = '/api/v1/user/login',
   UserInfo = '/api/v1/user/userInfo/', // userInfo/{userId}
-  UserMenus = '/api/v1/menu/list/' // menu/{userId}
+  UserMenus = '/api/v1/menu/list/', // menu/{userId}
+  UserPermi = '/api/v1/user/authority/'
 }
 // 登录请求
 export function loginRequest(account: IAccount): Promise<IDataType<any>> {
@@ -32,6 +33,13 @@ export function requestUserInfo(id: number): Promise<IDataType<any>> {
 export function requestUserMenus(id: number): Promise<IDataType<any>> {
   return auRequest.get({
     url: LoginAPI.UserMenus + id,
+    showLoading: false
+  })
+}
+// 用户权限请求
+export function requestUserPermi(id: number): Promise<IDataType<any>> {
+  return auRequest.get({
+    url: LoginAPI.UserPermi + id,
     showLoading: false
   })
 }

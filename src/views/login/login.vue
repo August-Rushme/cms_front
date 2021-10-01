@@ -2,12 +2,20 @@
  * @Author: August
  * @Date: 2021-09-25 17:45:51
  * @LastEditors: August
- * @LastEditTime: 2021-09-25 17:58:12
+ * @LastEditTime: 2021-09-30 12:08:54
  * @FilePath: \rookie-cms\src\views\login\login.vue
 -->
 <template>
-  <div class="login">
-    <login-panel />
+  <div class="bg">
+    <div class="login_box">
+      <div class="avatar_box">
+        <img src="../../assets/img/logo.svg" alt="" />
+      </div>
+
+      <div class="login">
+        <login-panel />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -26,12 +34,52 @@ export default defineComponent({
 </script>
 
 <style scoped lang="less">
-.login {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.bg {
   width: 100%;
-  height: 100%;
-  background: url('../../assets/img/login-bg.svg');
+  height: 100vh;
+  background-position: center center;
+  background: url(https://w.wallhaven.cc/full/k7/wallhaven-k73p36.jpg) no-repeat;
+  background-size: 100% 100%;
+  overflow: auto;
+
+  .login_box {
+    width: 450px;
+    height: 400px;
+    background-color: #fff;
+    border-radius: 3px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    .avatar_box {
+      height: 120px;
+      width: 120px;
+      border: 1px solid #eee;
+      border-radius: 50%;
+      padding: 10px;
+      box-shadow: 0 0 10px #ddd;
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #fff;
+
+      img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+
+        background-color: #eee;
+      }
+    }
+  }
+
+  .login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
 }
 </style>

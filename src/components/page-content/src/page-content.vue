@@ -2,7 +2,7 @@
  * @Author: August
  * @Date: 2021-09-27 11:14:55
  * @LastEditors: August
- * @LastEditTime: 2021-09-29 10:04:04
+ * @LastEditTime: 2021-10-01 15:30:02
  * @FilePath: \rookie-cms\src\components\page-content\src\page-content.vue
 -->
 <template>
@@ -30,6 +30,10 @@
       </template>
       <template #updated="scope">
         <span>{{ $filters.formatTime(scope.row.updated) }}</span>
+      </template>
+
+      <template #picture="scope">
+        <el-image style="width: 70px; height: 70px" :src="scope.row.goodsImg" alt=""></el-image>
       </template>
       <template #handler="scope">
         <div class="handle-btns">
@@ -93,7 +97,6 @@ export default defineComponent({
 
     // 3.从vuex中获取数据
     const dataList = computed(() => store.getters[`system/pageListData`](props.pageName))
-
     const handleEditClick = (item: any) => {
       emit('editBtnClick', item)
     }
