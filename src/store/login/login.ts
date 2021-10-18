@@ -2,8 +2,8 @@
  * @Author: August
  * @Date: 2021-09-25 18:04:36
  * @LastEditors: August
- * @LastEditTime: 2021-09-30 14:35:05
- * @FilePath: \rookie-cms\src\store\login\login.ts
+ * @LastEditTime: 2021-10-18 15:54:24
+ * @FilePath: \vue3-ts-cmse:\rookie-cms\src\store\login\login.ts
  */
 import { IAccount } from '@/service/login/types'
 import { Module } from 'vuex'

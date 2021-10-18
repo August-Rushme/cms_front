@@ -2,7 +2,7 @@
  * @Author: August
  * @Date: 2021-09-26 14:06:33
  * @LastEditors: August
- * @LastEditTime: 2021-09-30 12:49:09
+ * @LastEditTime: 2021-10-04 18:21:22
  * @FilePath: \rookie-cms\src\views\main\system\user\user.vue
 -->
 <template>
@@ -315,7 +315,6 @@ export default defineComponent({
     const total = computed(() => store.getters[`system/pageListCount`](pageName))
     console.log(total.value)
     const handleSizeChange = (pageSize: any) => {
-      console.log(`每页 ${pageSize} 条`)
       pageInfo.value.pageSize = pageSize
       console.log(queryInfo)
       store.dispatch('system/getPageListAction', {
@@ -324,7 +323,6 @@ export default defineComponent({
       })
     }
     const handleCurrentChange = (pageNum: any) => {
-      console.log(`当前页: ${pageNum}`)
       pageInfo.value.pageNum = pageNum
       console.log(queryInfo)
       store.dispatch('system/getPageListAction', {

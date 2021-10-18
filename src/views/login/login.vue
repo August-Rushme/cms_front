@@ -2,8 +2,8 @@
  * @Author: August
  * @Date: 2021-09-25 17:45:51
  * @LastEditors: August
- * @LastEditTime: 2021-09-30 12:08:54
- * @FilePath: \rookie-cms\src\views\login\login.vue
+ * @LastEditTime: 2021-10-18 15:53:54
+ * @FilePath: \vue3-ts-cmse:\rookie-cms\src\views\login\login.vue
 -->
 <template>
   <div class="bg">
@@ -38,7 +38,7 @@ export default defineComponent({
   width: 100%;
   height: 100vh;
   background-position: center center;
-  background: url(https://w.wallhaven.cc/full/k7/wallhaven-k73p36.jpg) no-repeat;
+
   background-size: 100% 100%;
   overflow: auto;
 

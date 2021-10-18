@@ -2,8 +2,8 @@
  * @Author: August
  * @Date: 2021-09-25 19:34:50
  * @LastEditors: August
- * @LastEditTime: 2021-09-26 16:59:17
- * @FilePath: \rookie-cms\src\views\main\main.vue
+ * @LastEditTime: 2021-10-18 16:00:14
+ * @FilePath: \vue3-ts-cmse:\rookie-cms\src\views\main\main.vue
 -->
 <template>
   <div class="main">
@@ -51,10 +51,9 @@ export default defineComponent({
 
 <style scoped lang="less">
 .main {
-  position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+
   height: 100%;
   background-color: f5f5f5;
 }

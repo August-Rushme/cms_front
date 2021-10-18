@@ -2,7 +2,7 @@
  * @Author: August
  * @Date: 2021-09-25 11:07:41
  * @LastEditors: August
- * @LastEditTime: 2021-09-25 11:45:18
+ * @LastEditTime: 2021-10-03 21:21:51
  * @FilePath: \rookie-cms\src\service\request\index.ts
  */
 import axios from 'axios'
@@ -25,12 +25,10 @@ class AuRequest {
     this.showLoading = config.showLoading ?? DEFAULT_LOADING
     this.interceptors = config.interceptors
     //单个实例使用interceptors
-    //请求拦截器
     this.instance.interceptors.request.use(
       this.interceptors?.requestInterceptor,
       this.interceptors?.requestInterceptorCatch
     )
-    // 响应拦截器
     this.instance.interceptors.response.use(
       this.interceptors?.responseInterceptor,
       this.interceptors?.responseInterceptor
@@ -74,7 +72,6 @@ class AuRequest {
       this.instance
         .request<any, T>(config)
         .then((res) => {
-          // 单个请求的数据处理
           if (config.interceptors?.responseInterceptor) {
             res = config.interceptors.responseInterceptor(res)
           }
@@ -83,7 +80,6 @@ class AuRequest {
           resolve(res)
         })
         .catch((err) => {
-          // 将showLoading设置为true,避免影响下一个请求
           this.showLoading = DEFAULT_LOADING
           reject(err)
         })

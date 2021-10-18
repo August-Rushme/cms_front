@@ -2,8 +2,8 @@
  * @Author: August
  * @Date: 2021-09-26 17:52:33
  * @LastEditors: August
- * @LastEditTime: 2021-09-29 21:26:51
- * @FilePath: \rookie-cms\src\views\main\analysis\dashboard\dashboard.vue
+ * @LastEditTime: 2021-10-19 01:47:38
+ * @FilePath: \vue_shop_servere:\rookie-cms\src\views\main\analysis\dashboard\dashboard.vue
 -->
 <template>
   <div class="dashboards">
@@ -16,7 +16,7 @@
       </div>
       <div class="date">
         <i class="el-icon-date"></i>
-        <div class="dateInfo">今天：9月30日</div>
+        <div class="dateInfo">今天：{{ currentTime }}</div>
       </div>
     </div>
     <echatsPanel />
@@ -25,16 +25,22 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, ref } from 'vue'
 import echatsPanel from './cpns/echarts-panel.vue'
 import bottomMap from './cpns/Map.vue'
+import { currentDateTime } from '@/utils/date-format'
 export default defineComponent({
   components: {
     echatsPanel,
     bottomMap
   },
   setup() {
-    return {}
+    const timestamp = new Date().getTime()
+    const currentTime = ref()
+    currentTime.value = currentDateTime(timestamp)
+    return {
+      currentTime
+    }
   }
 })
 </script>

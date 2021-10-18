@@ -2,8 +2,8 @@
  * @Author: August
  * @Date: 2021-09-26 14:11:00
  * @LastEditors: August
- * @LastEditTime: 2021-09-26 17:00:04
- * @FilePath: \rookie-cms\src\components\nav-menus\src\nav-menus.vue
+ * @LastEditTime: 2021-10-18 16:06:50
+ * @FilePath: \vue3-ts-cmse:\rookie-cms\src\components\nav-menus\src\nav-menus.vue
 -->
 <template>
   <div class="nav-menu">
@@ -124,7 +124,7 @@ export default defineComponent({
     }
   }
 
-  ::v-deep .el-submenu__title {
+  :deep(.el-submenu__title) {
     background-color: #001529 !important;
   }
 
