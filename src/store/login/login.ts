@@ -2,8 +2,8 @@
  * @Author: August
  * @Date: 2021-09-25 18:04:36
  * @LastEditors: August
- * @LastEditTime: 2021-10-18 15:54:24
- * @FilePath: \vue3-ts-cmse:\rookie-cms\src\store\login\login.ts
+ * @LastEditTime: 2021-10-19 10:11:09
+ * @FilePath: \vue_shop_servere:\rookie-cms\src\store\login\login.ts
  */
 import { IAccount } from '@/service/login/types'
 import { Module } from 'vuex'
@@ -48,6 +48,7 @@ const loginModule: Module<ILoginStateType, IRootTypes> = {
       playload.password = Md5.hashStr(playload.password + '')
       // 处理登录
       const { data: loginResult } = await loginRequest(playload)
+
       const { token, id } = loginResult.data
       commit('changeToken', token)
       localCache.setCache('token', token)

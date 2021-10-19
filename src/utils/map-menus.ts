@@ -2,14 +2,14 @@
  * @Author: August
  * @Date: 2021-09-26 14:18:23
  * @LastEditors: August
- * @LastEditTime: 2021-10-01 15:26:50
- * @FilePath: \rookie-cms\src\utils\map-menus.ts
+ * @LastEditTime: 2021-10-19 10:12:22
+ * @FilePath: \vue_shop_servere:\rookie-cms\src\utils\map-menus.ts
  */
 import type { RouteRecordRaw } from 'vue-router'
 import { IBreadcrumb } from '@/base-ui/breadcrumb/types'
 let firstMenu: any = null
 // debugger
-export function mapMenusToRoutes(userMenus: any[]): RouteRecordRaw[] {
+export function mapMenusToRoutes(userMenus: any[] = []): RouteRecordRaw[] {
   const routes: RouteRecordRaw[] = []
   //1. 加载所有路由
   const allRoutes: RouteRecordRaw[] = []
