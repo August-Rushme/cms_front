@@ -2,7 +2,7 @@
  * @Author: August
  * @Date: 2021-09-26 14:18:23
  * @LastEditors: August
- * @LastEditTime: 2021-10-19 10:33:55
+ * @LastEditTime: 2021-10-19 10:35:58
  * @FilePath: \vue_shop_servere:\rookie-cms\src\utils\map-menus.ts
  */
 import type { RouteRecordRaw } from 'vue-router'
