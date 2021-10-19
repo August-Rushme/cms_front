@@ -2,7 +2,7 @@
  * @Author: August
  * @Date: 2021-09-26 14:18:23
  * @LastEditors: August
- * @LastEditTime: 2021-10-19 10:12:22
+ * @LastEditTime: 2021-10-19 10:33:55
  * @FilePath: \vue_shop_servere:\rookie-cms\src\utils\map-menus.ts
  */
 import type { RouteRecordRaw } from 'vue-router'
@@ -25,7 +25,7 @@ export function mapMenusToRoutes(userMenus: any[] = []): RouteRecordRaw[] {
   // type === 1 -> children -> type === 1
   // type === 2 -> url -> route
   // debugger
-  const _recurseGetRoute = (menus: any[]) => {
+  const _recurseGetRoute = (menus: any[] = []) => {
     for (const menu of menus) {
       if (menu.type === 2) {
         const route = allRoutes.find((route) => route.path === menu.path)
