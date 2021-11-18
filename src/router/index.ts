@@ -2,8 +2,8 @@
  * @Author: August
  * @Date: 2021-09-24 16:36:12
  * @LastEditors: August
- * @LastEditTime: 2021-09-30 11:12:21
- * @FilePath: \rookie-cms\src\router\index.ts
+ * @LastEditTime: 2021-11-18 16:03:41
+ * @FilePath: \firstfluttere:\rookie-cms\src\router\index.ts
  */
 
 import { createRouter, createWebHistory } from 'vue-router'
@@ -11,14 +11,22 @@ import type { RouteRecordRaw } from 'vue-router'
 import localCache from '@/utils/catch'
 import { firstMenu } from '@/utils/map-menus'
 const routes: RouteRecordRaw[] = [
-  { path: '/', name: 'home', component: () => import('@/views/home/home.vue') },
+  {
+    path: '/',
+    name: 'home',
+    component: () => import(/*webpackChunkName:"Login_Home_Main" */ '@/views/home/home.vue')
+  },
 
   {
     path: '/login',
     name: 'login',
-    component: () => import('@/views/login/login.vue')
+    component: () => import(/*webpackChunkName:"Login_Home_Main" */ '@/views/login/login.vue')
   },
-  { path: '/main', name: 'main', component: () => import('@/views/main/main.vue') },
+  {
+    path: '/main',
+    name: 'main',
+    component: () => import(/*webpackChunkName:"Login_Home_Main" */ '@/views/main/main.vue')
+  },
   {
     path: '/:pathMatch(.*)*',
     name: 'not-found',

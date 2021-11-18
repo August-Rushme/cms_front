@@ -2,25 +2,50 @@
  * @Author: August
  * @Date: 2021-09-24 16:10:31
  * @LastEditors: August
- * @LastEditTime: 2021-09-30 10:57:07
- * @FilePath: \rookie-cms\public\index.html
+ * @LastEditTime: 2021-11-18 15:52:39
+ * @FilePath: \firstfluttere:\rookie-cms\public\index.html
 -->
 <!DOCTYPE html>
 <html lang="">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title><%= htmlWebpackPlugin.options.title %></title>
 
-  </head>
-  <body>
-    <noscript>
-      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-    </noscript>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js"></script> -->
-  </body>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+  <title>
+    <%= htmlWebpackPlugin.options.title %>
+  </title>
+  <% if(htmlWebpackPlugin.options.isProd){ %>
+
+
+    <!-- element-ui 的样式表文件 -->
+    <!-- <link rel="stylesheet" href="" /> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/element-plus@1.2.0-beta.3/theme-chalk/base.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/element-plus@1.2.0-beta.3/dist/index.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@3.2.16/dist/vue.global.min.js"></script>
+
+    <script src="https://cdn.staticfile.org/axios/0.21.4/axios.min.js"></script>
+    <script src="https://cdn.staticfile.org/echarts/5.2.1/echarts.min.js"></script>
+
+    <!-- 富文本编辑器 的 js 文件 -->
+    <script src="https://cdn.jsdelivr.net/npm/wangeditor@4.7.8/dist/wangEditor.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/element-plus@1.2.0-beta.3/dist/index.full.min.js"></script>
+
+    <% } %>
+
+</head>
+
+<body>
+  <noscript>
+    <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled.
+        Please enable it to continue.</strong>
+  </noscript>
+  <div id="app"></div>
+  <!-- built files will be auto injected -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js"></script> -->
+</body>
+
 </html>

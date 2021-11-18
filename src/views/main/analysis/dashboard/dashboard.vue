@@ -2,8 +2,8 @@
  * @Author: August
  * @Date: 2021-09-26 17:52:33
  * @LastEditors: August
- * @LastEditTime: 2021-10-19 01:47:38
- * @FilePath: \vue_shop_servere:\rookie-cms\src\views\main\analysis\dashboard\dashboard.vue
+ * @LastEditTime: 2021-10-19 11:48:25
+ * @FilePath: \rookie-cms\src\views\main\analysis\dashboard\dashboard.vue
 -->
 <template>
   <div class="dashboards">
