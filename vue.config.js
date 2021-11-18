@@ -2,7 +2,7 @@
  * @Author: August
  * @Date: 2021-09-24 16:22:16
  * @LastEditors: August
- * @LastEditTime: 2021-11-18 16:11:44
+ * @LastEditTime: 2021-11-18 16:29:36
  * @FilePath: \firstfluttere:\rookie-cms\vue.config.js
  */
 module.exports = {
@@ -27,14 +27,17 @@ module.exports = {
     }
   },
   chainWebpack: (config) => {
-    config.set('externals', {
-      Vue: 'vue',
-      axios: 'axios',
-      echarts: 'echarts'
-    })
-    config.plugin('html').tap((args) => {
-      args[0].isProd = true
-      return args
+    //发布模式
+    config.when(process.env.NODE_ENV === 'production', (config) => {
+      config.set('externals', {
+        Vue: 'vue',
+        axios: 'axios',
+        echarts: 'echarts'
+      })
+      config.plugin('html').tap((args) => {
+        args[0].isProd = true
+        return args
+      })
     })
   }
 }
