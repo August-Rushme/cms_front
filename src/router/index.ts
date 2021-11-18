@@ -2,7 +2,7 @@
  * @Author: August
  * @Date: 2021-09-24 16:36:12
  * @LastEditors: August
- * @LastEditTime: 2021-11-18 16:03:41
+ * @LastEditTime: 2021-11-18 17:16:03
  * @FilePath: \firstfluttere:\rookie-cms\src\router\index.ts
  */
 
@@ -40,11 +40,14 @@ const router = createRouter({
 // 路由拦截
 router.beforeEach((to) => {
   if (to.path !== '/login') {
-    const token = localCache.getCache('token')
-    if (!token) {
-      return '/login'
+    if (to.path !== '/') {
+      const token = localCache.getCache('token')
+      if (!token) {
+        return '/login'
+      }
     }
   }
+
   if (to.path === '/main') {
     return firstMenu.path
   }
